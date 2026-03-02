@@ -18,6 +18,8 @@ spring:
               uri: lb://sensor-service
               predicates:
                 - Path=/sensor-service/**
+              filters:
+                - RewritePath=/sensor-service/(?<segment>.*), /api/sensors/${segment}
 
             - id: automation-service
               uri: lb://automation-service
