@@ -1,0 +1,16 @@
+# Virtual Environment
+.venv/
+venv/
+ENV/
+
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Environment variables (වැදගත්ම කොටස)
+.env
+
+# IDE settings
+.idea/
+.vscode/
