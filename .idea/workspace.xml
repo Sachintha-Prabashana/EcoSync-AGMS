@@ -5,13 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aeea8e2a-1aca-42d7-96dd-86a35034fa62" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/domain-services/crop-inventory-service/src/main/java/lk/ijse/cropinventoryservice/controller/CropManageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/domain-services/crop-inventory-service/src/main/java/lk/ijse/cropinventoryservice/service/CropService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/infrastructure-services/api-gateway/src/main/java/lk/ijse/apigateway/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain-services/crop-inventory-service/src/main/java/lk/ijse/cropinventoryservice/controller/CropManageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain-services/crop-inventory-service/src/main/java/lk/ijse/cropinventoryservice/controller/CropManageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain-services/crop-inventory-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/domain-services/crop-inventory-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure-services/api-gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure-services/api-gateway/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +69,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.ApiGatewayApplication.executor": "Run",
+    "Spring Boot.ConfigServerApplication.executor": "Run",
     "Spring Boot.CropInventoryServiceApplication.executor": "Run",
     "Spring Boot.EurekaServerApplication.executor": "Run",
     "Spring Boot.ZoneManagementServiceApplication.executor": "Run",
@@ -113,10 +115,17 @@
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.CropInventoryServiceApplication">
+  <component name="RunManager" selected="Spring Boot.ConfigServerApplication">
     <configuration name="ApiGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="api-gateway" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="lk.ijse.apigateway.ApiGatewayApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ConfigServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="config-server" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="lk.ijse.configserver.ConfigServerApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -162,7 +171,12 @@
       <workItem from="1772418410685" duration="18000" />
       <workItem from="1772418520937" duration="23000" />
       <workItem from="1772418600000" duration="7749000" />
-      <workItem from="1772457281449" duration="2892000" />
+      <workItem from="1772457281449" duration="3587000" />
+      <workItem from="1772588909339" duration="5887000" />
+      <workItem from="1772596395111" duration="5924000" />
+      <workItem from="1772605100343" duration="2424000" />
+      <workItem from="1772812111596" duration="2897000" />
+      <workItem from="1772815975585" duration="373000" />
     </task>
     <servers />
   </component>

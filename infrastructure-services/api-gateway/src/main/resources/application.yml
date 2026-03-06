@@ -13,6 +13,8 @@ spring:
               uri: lb://zone-service
               predicates:
                 - Path=/zone-service/**
+              filters:
+                - RewritePath=/zone-service/(?<segment>.*), /${segment}
 
             - id: sensor-service
               uri: lb://sensor-service
@@ -25,11 +27,15 @@ spring:
               uri: lb://automation-service
               predicates:
                 - Path=/automation-service/**
+              filters:
+                - RewritePath=/automation-service/(?<segment>.*), /${segment}
 
             - id: crop-service
               uri: lb://crop-service
               predicates:
                 - Path=/crop-service/**
+              filters:
+                - RewritePath=/crop-service/(?<segment>.*), /${segment}
 
 eureka:
   client:
