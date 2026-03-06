@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aeea8e2a-1aca-42d7-96dd-86a35034fa62" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/infrastructure-services/api-gateway/src/main/java/lk/ijse/apigateway/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain-services/crop-inventory-service/src/main/java/lk/ijse/cropinventoryservice/controller/CropManageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain-services/crop-inventory-service/src/main/java/lk/ijse/cropinventoryservice/controller/CropManageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain-services/crop-inventory-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/domain-services/crop-inventory-service/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure-services/api-gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure-services/api-gateway/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain-services/crop-inventory-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/domain-services/crop-inventory-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain-services/zone-management-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/domain-services/zone-management-service/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,7 +170,7 @@
       <workItem from="1772596395111" duration="5924000" />
       <workItem from="1772605100343" duration="2424000" />
       <workItem from="1772812111596" duration="2897000" />
-      <workItem from="1772815975585" duration="373000" />
+      <workItem from="1772815975585" duration="771000" />
     </task>
     <servers />
   </component>
