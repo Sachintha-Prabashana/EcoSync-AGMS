@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: zone-service
+  cloud:
+    config:
+      enabled: true
+  config:
+    import: "configserver:http://localhost:8888"

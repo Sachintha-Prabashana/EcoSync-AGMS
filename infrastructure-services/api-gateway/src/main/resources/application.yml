@@ -5,49 +5,6 @@ spring:
   application:
     name: api-gateway
   cloud:
-    gateway:
-      server:
-        webflux:
-          routes:
-            - id: zone-service
-              uri: lb://zone-service
-              predicates:
-                - Path=/zone-service/**
-              filters:
-                - RewritePath=/zone-service/(?<segment>.*), /${segment}
-
-            - id: sensor-service
-              uri: lb://sensor-service
-              predicates:
-                - Path=/sensor-service/**
-              filters:
-                - RewritePath=/sensor-service/(?<segment>.*), /api/sensors/${segment}
-
-            - id: automation-service
-              uri: lb://automation-service
-              predicates:
-                - Path=/automation-service/**
-              filters:
-                - RewritePath=/automation-service/(?<segment>.*), /${segment}
-
-            - id: crop-service
-              uri: lb://crop-service
-              predicates:
-                - Path=/crop-service/**
-              filters:
-                - RewritePath=/crop-service/(?<segment>.*), /${segment}
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-  instance:
-    prefer-ip-address: true
-
-
-
-
-
-
-
-
+    config:
+      uri: http://localhost:8888
+      fail-fast: true  # when server is not available it will throw an error and stop the application

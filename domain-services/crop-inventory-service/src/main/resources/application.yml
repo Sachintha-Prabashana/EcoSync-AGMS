@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: crop-service
+  cloud:
+    config:
+      enabled: true
+  config:
+    import: "configserver:http://localhost:8888"
+
