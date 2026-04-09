@@ -5,14 +5,18 @@ from dotenv import load_dotenv
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
 from app.core.config import init_eureka, stop_eureka
+from app.core.database import init_db
 from app.api.routes import router as api_router
 
 # Load environment variables from .env file
 load_dotenv()
 
-# Manage Eureka lifecycle using lifespan
+# Manage Eureka and DB lifecycle using lifespan
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    # Initialize database tables
+    init_db()
+    
     # When run startup register to eureka
     await init_eureka()
     yield
