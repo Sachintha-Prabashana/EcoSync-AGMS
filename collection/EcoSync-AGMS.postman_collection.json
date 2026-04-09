@@ -1,0 +1,544 @@
+{
+  "info": {
+    "_postman_id": "891a8962-8880-4c5c-a462-d41260211ed7",
+    "name": "EcoSync",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52435394",
+    "_collection_link": "https://go.postman.co/collection/52435394-891a8962-8880-4c5c-a462-d41260211ed7?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Zones",
+      "item": [
+        {
+          "name": "IOT",
+          "item": [
+            {
+              "name": "loginIot",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"username\": \"sachintha_p\", \r\n  \"password\": \"12345678\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{iotUrl}}/api/auth/login",
+                  "host": [
+                    "{{iotUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "showRegisterdDevices",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "mock-jwt-token-sachintha",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{iotUrl}}/api/devices",
+                  "host": [
+                    "{{iotUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "devices"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "getZoneCheck",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "mock-jwt-token-sachintha",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/zone-service/api/zones",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "zone-service",
+                "api",
+                "zones"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "addNewZone",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "mock-jwt-token-sachintha",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Line 02 - Orchid Hall\",\r\n    \"minTemp\": 18.0,\r\n    \"maxTemp\": 24.0,\r\n    \"minHumidity\": 50.0,\r\n    \"maxHumidity\": 70.0\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/zone-service/api/zones",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "zone-service",
+                "api",
+                "zones"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getSingleZone",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "mock-jwt-token-sachintha",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Strawberry Greenhouse\",\r\n    \"minTemp\": 18.0,\r\n    \"maxTemp\": 25.0,\r\n    \"minHumidity\": 60.0,\r\n    \"maxHumidity\": 80.0\r\n}\r\n"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/zone-service/api/zones/3",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "zone-service",
+                "api",
+                "zones",
+                "3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "updateZone",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "mock-jwt-token-sachintha",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Strawberry Greenhouse Updated\",\r\n    \"minTemp\": 19.0,\r\n    \"maxTemp\": 26.0,\r\n    \"minHumidity\": 65.0,\r\n    \"maxHumidity\": 75.0\r\n}\r\n\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/zone-service/api/zones/3",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "zone-service",
+                "api",
+                "zones",
+                "3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "deleteZone",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "mock-jwt-token-sachintha",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/zone-service/api/zones/4",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "zone-service",
+                "api",
+                "zones",
+                "4"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "crops",
+      "item": [
+        {
+          "name": "viewAllCrops",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "mock-jwt-token-sachintha",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/crop-service/api/crops",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "crop-service",
+                "api",
+                "crops"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "registerNewCrops",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "mock-jwt-token-sachintha",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"batchName\": \"B002\",\r\n    \"cropType\": \"Lettuce\",\r\n    \"status\": \"SEEDLING\",\r\n    \"plantedDate\": \"2026-04-09\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/crop-service/api/crops",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "crop-service",
+                "api",
+                "crops"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "viewCropDetails",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "mock-jwt-token-sachintha",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/crop-service/api/crops/1/status?status=VEGETATIVE",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "crop-service",
+                "api",
+                "crops",
+                "1",
+                "status"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "VEGETATIVE"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "updateBatchData",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "mock-jwt-token-sachintha",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"batchName\": \"B002-Updated\",\r\n    \"cropType\": \"Organic Lettuce\",\r\n    \"plantedDate\": \"2026-04-10\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/crop-service/api/crops/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "crop-service",
+                "api",
+                "crops",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "automation",
+      "item": [
+        {
+          "name": "getHealth",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/automation-service/api/v1/automation/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "automation-service",
+                "api",
+                "v1",
+                "automation",
+                "health"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "checkLogic",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"timestamp\": \"2026-04-09T10:00:00Z\",\r\n    \"readings\": [\r\n        {\r\n            \"deviceId\": \"MANUAL-TEST-001\",\r\n            \"zoneId\": \"5\",\r\n            \"temperature\": 35.5,\r\n            \"humidity\": 70.0\r\n        }\r\n    ]\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/automation-service/api/v1/automation/process",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "automation-service",
+                "api",
+                "v1",
+                "automation",
+                "process"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "sensor",
+      "item": [
+        {
+          "name": "checkHealth",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/sensor-service/api/sensors/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "sensor-service",
+                "api",
+                "sensors",
+                "health"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getLatest",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "mock-jwt-token-sachintha",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/sensor-service/api/sensors/latest",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "sensor-service",
+                "api",
+                "sensors",
+                "latest"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": ""
+    },
+    {
+      "key": "iotUrl",
+      "value": ""
+    },
+    {
+      "key": "iotbase",
+      "value": ""
+    }
+  ]
+}
