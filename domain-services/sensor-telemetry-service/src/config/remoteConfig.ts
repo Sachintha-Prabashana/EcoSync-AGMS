@@ -46,12 +46,16 @@ export const fetchRemoteConfig = async (): Promise<Partial<AppConfig>> => {
 export const getFullConfig = async (): Promise<AppConfig> => {
     const remote = await fetchRemoteConfig();
     
-    return {
+    // Priority: Local .env > Remote Config Server
+    const config = {
         port: parseInt(process.env.PORT || '8082'),
-        iotApiUrl: remote.iotApiUrl || process.env.IOT_API_URL || '',
-        iotUsername: remote.iotUsername || process.env.IOT_USERNAME || '',
-        iotPassword: remote.iotPassword || process.env.IOT_PASSWORD || '',
-        automationServiceUrl: remote.automationServiceUrl || process.env.AUTOMATION_SERVICE_URL || '',
-        mongoUri: remote.mongoUri || process.env.MONGO_URI || 'mongodb://localhost:27017/ecosync_sensor_db'
+        iotApiUrl: process.env.IOT_API_URL || remote.iotApiUrl || '',
+        iotUsername: process.env.IOT_USERNAME || remote.iotUsername || 'sachintha_p',
+        iotPassword: process.env.IOT_PASSWORD || remote.iotPassword || '12345678',
+        automationServiceUrl: process.env.AUTOMATION_SERVICE_URL || remote.automationServiceUrl || 'http://localhost:8083/api/v1/automation/process',
+        mongoUri: process.env.MONGO_URI || remote.mongoUri || 'mongodb://localhost:27017/ecosync_sensor_db'
     };
+
+    console.log(`[Config] Using IoT API URL: ${config.iotApiUrl}`);
+    return config;
 };

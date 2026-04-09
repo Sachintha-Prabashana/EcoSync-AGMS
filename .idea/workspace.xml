@@ -4,15 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aeea8e2a-1aca-42d7-96dd-86a35034fa62" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/domain-services/zone-management-service/src/main/java/lk/ijse/zonemanagementservice/entity/Zone.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="aeea8e2a-1aca-42d7-96dd-86a35034fa62" name="Changes" comment="Feature: Add Zone Management Service with configuration and dependencies">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain-services/crop-inventory-service/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/domain-services/crop-inventory-service/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain-services/zone-management-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/domain-services/zone-management-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain-services/zone-management-service/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/domain-services/zone-management-service/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure-services/api-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure-services/api-gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure-services/api-gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure-services/api-gateway/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain-services/automation-service/.env" beforeDir="false" afterPath="$PROJECT_DIR$/domain-services/automation-service/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain-services/automation-service/app/api/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/domain-services/automation-service/app/api/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain-services/automation-service/app/core/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/domain-services/automation-service/app/core/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain-services/automation-service/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/domain-services/automation-service/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain-services/crop-inventory-service/src/main/java/lk/ijse/cropinventoryservice/service/CropService.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain-services/crop-inventory-service/src/main/java/lk/ijse/cropinventoryservice/service/CropService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain-services/crop-inventory-service/src/main/java/lk/ijse/cropinventoryservice/service/impl/CropServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain-services/crop-inventory-service/src/main/java/lk/ijse/cropinventoryservice/service/impl/CropServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain-services/sensor-telemetry-service/eureka-helper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain-services/sensor-telemetry-service/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain-services/sensor-telemetry-service/src/config/remoteConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/domain-services/sensor-telemetry-service/src/config/remoteConfig.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain-services/sensor-telemetry-service/src/models/Telemetry.ts" beforeDir="false" afterPath="$PROJECT_DIR$/domain-services/sensor-telemetry-service/src/models/Telemetry.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain-services/sensor-telemetry-service/src/services/sensorService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/domain-services/sensor-telemetry-service/src/services/sensorService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain-services/zone-management-service/src/main/java/lk/ijse/zonemanagementservice/controller/ZoneManageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain-services/zone-management-service/src/main/java/lk/ijse/zonemanagementservice/controller/ZoneManageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain-services/zone-management-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/domain-services/zone-management-service/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +122,7 @@
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.CropInventoryServiceApplication">
+  <component name="RunManager" selected="Spring Boot.ZoneManagementServiceApplication">
     <configuration name="ApiGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="api-gateway" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="lk.ijse.apigateway.ApiGatewayApplication" />
@@ -180,7 +186,12 @@
       <workItem from="1772815975585" duration="3058000" />
       <workItem from="1772857696814" duration="12775000" />
       <workItem from="1772884205993" duration="37000" />
-      <workItem from="1775010515968" duration="2414000" />
+      <workItem from="1775010515968" duration="2779000" />
+      <workItem from="1775183821116" duration="4000" />
+      <workItem from="1775184456049" duration="62000" />
+      <workItem from="1775368842726" duration="763000" />
+      <workItem from="1775540368158" duration="4129000" />
+      <workItem from="1775708876467" duration="5890000" />
     </task>
     <servers />
   </component>

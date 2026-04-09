@@ -55,6 +55,34 @@ public class CropServiceImpl implements CropService {
     }
 
     @Override
+    public CropDTO getCropById(Long id) {
+        Crop crop = cropRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Crop not found with id: " + id));
+        return modelMapper.map(crop, CropDTO.class);
+    }
+
+    @Override
+    public void updateCrop(Long id, CropDTO dto) {
+        Crop crop = cropRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Crop not found with id: " + id));
+        
+        // Update metadata fields only (status has its own dedicated method)
+        crop.setBatchName(dto.getBatchName());
+        crop.setCropType(dto.getCropType());
+        crop.setPlantedDate(dto.getPlantedDate());
+        
+        cropRepository.save(crop);
+    }
+
+    @Override
+    public void deleteCrop(Long id) {
+        if (!cropRepository.existsById(id)) {
+            throw new IllegalArgumentException("Crop not found with id: " + id);
+        }
+        cropRepository.deleteById(id);
+    }
+
+    @Override
     public List<CropDTO> getAllCrops() {
         return cropRepository.findAll().stream()
                 .map(crop -> modelMapper.map(crop, CropDTO.class))

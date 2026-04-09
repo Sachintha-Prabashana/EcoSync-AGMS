@@ -6,3 +6,9 @@ spring:
       enabled: true
   config:
     import: "configserver:http://localhost:8888"
+
+iot:
+  provider:
+    url: http://localhost:9090/api
+    username: sachintha_p
+    password: 12345678

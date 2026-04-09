@@ -1,15 +1,16 @@
+from dotenv import load_dotenv
+
+# Load environment variables from .env file FIRST
+load_dotenv()
+
 import uvicorn
 import os
 
-from dotenv import load_dotenv
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
 from app.core.config import init_eureka, stop_eureka
 from app.core.database import init_db
 from app.api.routes import router as api_router
-
-# Load environment variables from .env file
-load_dotenv()
 
 # Manage Eureka and DB lifecycle using lifespan
 @asynccontextmanager

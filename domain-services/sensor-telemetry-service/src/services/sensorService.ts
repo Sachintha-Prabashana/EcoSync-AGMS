@@ -46,7 +46,8 @@ class SensorService {
                 deviceId: device.deviceId,
                 name: device.name,
                 zoneId: device.zoneId,
-                data: telemetryResponse.data,
+                temperature: telemetryResponse.data.temperature,
+                humidity: telemetryResponse.data.humidity,
                 timestamp: new Date()
             };
 

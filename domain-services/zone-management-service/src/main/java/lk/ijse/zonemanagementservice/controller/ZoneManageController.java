@@ -49,9 +49,9 @@ public class ZoneManageController {
      * Deletion endpoint.
      */
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteZone(@PathVariable Long id) {
+    public ResponseEntity<String> deleteZone(@PathVariable Long id) {
         zoneService.deleteZone(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok("Zone deleted successfully with ID: " + id);
     }
 
     /**

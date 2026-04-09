@@ -15,7 +15,9 @@ def get_database_url():
     db_url = config.get("database_url")
     
     if not db_url:
-        db_url = os.getenv("DATABASE_URL")
+        # Check for multiple possible environment variables
+        db_url = os.getenv("MYSQL_URL") or os.getenv("DATABASE_URL")
+        
         if not db_url:
             # Default fallback for development
             db_url = "mysql+mysqlconnector://root:password@localhost:3306/ecosync_automation"
@@ -31,6 +33,7 @@ def get_database_url():
     return db_url
 
 DATABASE_URL = get_database_url()
+logger.info(f"Connecting to database at: {DATABASE_URL}")
 
 # Create SQLAlchemy engine
 # pool_pre_ping helps verify connections before using them
@@ -39,7 +42,7 @@ engine = create_engine(
     pool_pre_ping=True
 )
 
-# Sesion factory
+# Session factory
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 # Base class for models
