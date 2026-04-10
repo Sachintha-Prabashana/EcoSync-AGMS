@@ -1,11 +1,11 @@
 import httpx
-import logging
+import os
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-CONFIG_SERVER_URL = "http://localhost:8888/automation-service/default"
+CONFIG_SERVER_URL = os.getenv("CONFIG_SERVER_URL", "http://localhost:8888/automation-service/default")
 
 def fetch_remote_config():
     """

@@ -1,0 +1,193 @@
+services:
+  # --- Databases ---
+  postgres:
+    image: postgres:16-alpine
+    container_name: ecosync-postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - ecosync-pgdata:/var/lib/postgresql/data
+      - ./docker/postgres/init-databases.sql:/docker-entrypoint-initdb.d/init-databases.sql
+    networks:
+      - ecosync-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  mongo:
+    image: mongo:7.0
+    container_name: ecosync-mongo
+    environment:
+      MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
+    volumes:
+      - ecosync-mongodata:/data/db
+    networks:
+      - ecosync-network
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  mysql:
+    image: mysql:8.4
+    container_name: ecosync-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    volumes:
+      - ecosync-mysqldata:/var/lib/mysql
+    networks:
+      - ecosync-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # --- Infrastructure Services ---
+  eureka-server:
+    build: ./infrastructure-services/eureka-server
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+    networks:
+      - ecosync-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8761/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  config-server:
+    build: ./infrastructure-services/config-server
+    container_name: config-server
+    ports:
+      - "8888:8888"
+    depends_on:
+      eureka-server:
+        condition: service_started
+    environment:
+      EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: ${EUREKA_SERVER_URL}
+    networks:
+      - ecosync-network
+
+  mock-iot-server:
+    build: ./infrastructure-services/mock-iot-server
+    container_name: mock-iot-server
+    ports:
+      - "9090:9090"
+    networks:
+      - ecosync-network
+
+  # --- Domain Services ---
+  zone-management-service:
+    build: ./domain-services/zone-management-service
+    container_name: zone-service
+    ports:
+      - "8081:8081"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      config-server:
+        condition: service_started
+      mock-iot-server:
+        condition: service_started
+    environment:
+      SPRING_CONFIG_IMPORT: configserver:${CONFIG_SERVER_URL}
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/ecosync_zone_db
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
+      EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: ${EUREKA_SERVER_URL}
+      IOT_PROVIDER_URL: http://mock-iot-server:9090/api
+    networks:
+      - ecosync-network
+
+  crop-inventory-service:
+    build: ./domain-services/crop-inventory-service
+    container_name: crop-service
+    ports:
+      - "8084:8084"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      config-server:
+        condition: service_started
+    environment:
+      SPRING_CONFIG_IMPORT: configserver:${CONFIG_SERVER_URL}
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/ecosync_crop_db
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
+      EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: ${EUREKA_SERVER_URL}
+    networks:
+      - ecosync-network
+
+  sensor-telemetry-service:
+    build: ./domain-services/sensor-telemetry-service
+    container_name: sensor-service
+    ports:
+      - "8082:8082"
+    depends_on:
+      mongo:
+        condition: service_healthy
+      config-server:
+        condition: service_started
+      mock-iot-server:
+        condition: service_started
+    environment:
+      CONFIG_SERVER_URL: ${CONFIG_SERVER_URL}
+      MONGO_URI: mongodb://mongo:27017/${MONGO_INITDB_DATABASE}
+      EUREKA_HOST: ${EUREKA_HOST}
+      EUREKA_PORT: ${EUREKA_PORT}
+      EUREKA_INSTANCE_HOSTNAME: sensor-service
+      IOT_API_URL: http://mock-iot-server:9090/api
+      AUTOMATION_SERVICE_URL: http://automation-service:8083/api/v1/automation/process
+    networks:
+      - ecosync-network
+
+  automation-service:
+    build: ./domain-services/automation-service
+    container_name: automation-service
+    ports:
+      - "8083:8083"
+    depends_on:
+      mysql:
+        condition: service_healthy
+      config-server:
+        condition: service_started
+    environment:
+      CONFIG_SERVER_URL: ${CONFIG_SERVER_URL}/automation-service/default
+      MYSQL_URL: mysql+mysqlconnector://root:${MYSQL_ROOT_PASSWORD}@mysql:3306/${MYSQL_DATABASE}
+      EUREKA_SERVER: ${EUREKA_SERVER_URL}
+      EUREKA_INSTANCE_HOSTNAME: automation-service
+    networks:
+      - ecosync-network
+
+  api-gateway:
+    build: ./infrastructure-services/api-gateway
+    container_name: api-gateway
+    ports:
+      - "8080:8080"
+    depends_on:
+      eureka-server:
+        condition: service_started
+      config-server:
+        condition: service_started
+    environment:
+      SPRING_CLOUD_CONFIG_URI: ${CONFIG_SERVER_URL}
+      EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: ${EUREKA_SERVER_URL}
+    networks:
+      - ecosync-network
+
+networks:
+  ecosync-network:
+    driver: bridge
+
+volumes:
+  ecosync-pgdata:
+  ecosync-mongodata:
+  ecosync-mysqldata:

@@ -9,7 +9,7 @@ async def init_eureka():
         eureka_server=os.getenv("EUREKA_SERVER"),
         app_name=os.getenv("APP_NAME", "automation-service"),
         instance_port=int(os.getenv("PORT", 8083)),
-        instance_host="localhost"
+        instance_host=os.getenv("EUREKA_INSTANCE_HOSTNAME", "localhost")
     )
     print(f"{os.getenv('APP_NAME')} registered with Eureka")
 
